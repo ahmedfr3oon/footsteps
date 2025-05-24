@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الأسئلة الشائعة - تحويل المشي إلى طاقة كهربائية</title>
+  <link rel="stylesheet" href="faq style.css">
+</head>
+<body>
+  <header>
+    <h1>الأسئلة الشائعة (FAQ)</h1>
+    <p>هنا أهم 50 سؤالاً وإجابة حول مشروع تحويل المشي إلى طاقة كهربائية –  .</p>
+  </header>
+
+  <main class="faq-container">
+    <!-- العناصر تولّد ديناميكيًا عبر الجافاسكربت -->
+  </main>
+
+  <script>
+    const faqData = [
+      {arQ: 'ما هي فكرة المشروع؟', enQ: 'What is the project idea?', arA: 'المشروع يستغل حركة المشي لتحويلها إلى طاقة كهربائية باستخدام مكونات بيزوكهربائية.', enA: 'The project harnesses walking motion to generate electrical energy using piezoelectric components.'},
+      {arQ: 'كيف تعمل العناصر البيزوكهربائية؟', enQ: 'How do piezoelectric elements work?', arA: 'عند الضغط على بلورات بيزوكهربائية يتولد شحنة كهربائية نتيجة تشوه شبكتها البلورية.', enA: 'Pressing on piezoelectric crystals generates an electric charge due to deformation of their crystal lattice.'},
+      {arQ: 'أين يمكن تركيب النظام؟', enQ: 'Where can the system be installed?', arA: 'تحت أرضيات المحطات، المولات، الأرصفة الذكية، أو داخل أحذية المشي.', enA: 'Under station floors, shopping malls, smart sidewalks, or inside walking shoes.'},
+      {arQ: 'كم طاقة ينتجها الفرد يومياً؟', enQ: 'How much energy does one person generate per day?', arA: 'بالمتوسط 0.5–1 واط-ساعة لكل 1000 خطوة، يعتمد على الوزن وسرعة المشي.', enA: 'On average 0.5–1 Wh per 1,000 steps, depending on weight and walking speed.'},
+      {arQ: 'ما هي الأجزاء الرئيسية في النظام؟', enQ: 'What are the main components of the system?', arA: 'بلاطات/أحذية بيزوكهربائية، جسر تقويم، منظم جهد، وحدة تخزين (بطارية/مكثف).', enA: 'Piezoelectric tiles/shoes, rectifier bridge, voltage regulator, storage unit (battery/capacitor).'},
+      {arQ: 'كيف يتم تخزين الطاقة؟', enQ: 'How is the energy stored?', arA: 'في بطاريات ليثيوم-أيون أو مكثفات فائقة عبر دوائر شحن منظمة.', enA: 'In Li-ion batteries or supercapacitors via regulated charging circuits.'},
+      {arQ: 'ما هي مميزات النظام؟', enQ: 'What are the system’s advantages?', arA: 'طاقة نظيفة، صامتة، مصدر متجدد، تقلل فاتورة الكهرباء.', enA: 'Clean, silent, renewable, reduces electricity bills.'},
+      {arQ: 'ما هي عيوب النظام؟', enQ: 'What are the system’s drawbacks?', arA: 'إنتاج طاقة محدود، تكلفة أولية مرتفعة، حساسية البلاطات للكسر.', enA: 'Limited output, high initial cost, fragility of tiles.'},
+      {arQ: 'هل يكفي لتشغيل إنارة شارع؟', enQ: 'Can it power street lighting?', arA: 'لا؛ مناسب لأجهزة صغيرة ومستشعرات فقط، ليس لإنارة كبيرة.', enA: 'No; suitable for small devices and sensors only, not large lighting.'},
+      {arQ: 'ما عمر البلاطات البيزوكهربائية؟', enQ: 'What is the lifespan of piezo tiles?', arA: 'بين 5–10 سنوات حسب جودة التصنيع وتوزيع الضغط.', enA: 'Around 5–10 years depending on build quality and pressure distribution.'},
+      {arQ: 'هل يتطلب النظام صيانة دورية؟', enQ: 'Does the system require regular maintenance?', arA: 'نعم؛ فحص التوصيلات، استبدال البلاطات المتشققة وتنظيف الأسطح.', enA: 'Yes; inspect connections, replace cracked tiles, and clean surfaces.'},
+      {arQ: 'كم تكلفة البلاطة الواحدة؟', enQ: 'What is the cost per tile?', arA: 'في مصر ~300–500 جنيه، عالمياً ~$10–15.', enA: 'In Egypt ≈ 300–500 EGP, internationally ~$10–15.'},
+      {arQ: 'ما البدائل للمولدات البيزوكهربائية؟', enQ: 'What are alternatives to piezo generators?', arA: 'مولدات كهرومغناطيسية صغيرة، محولات كهروستاتيكية (triboelectric).', enA: 'Small electromagnetic generators, triboelectric converters.'},
+      {arQ: 'أيّ البطاريات يفضل استخدامها؟', enQ: 'Which batteries are preferred?', arA: 'ليثيوم-أيون (18650) بسبب كثافة الطاقة وعمر الشحن.', enA: 'Li-ion (18650) for energy density and cycle life.'},
+      {arQ: 'هل يمكن استخدام مكثفات فائقة؟', enQ: 'Can supercapacitors be used?', arA: 'نعم؛ لشحن/تفريغ سريع ولكن بسعة أقل من البطاريات.', enA: 'Yes; for fast charge/discharge but lower capacity than batteries.'},
+      {arQ: 'ما دور منظم الجهد؟', enQ: 'What is the role of the voltage regulator?', arA: 'يثبت جهد الخرج لتغذية الأحمال أو شحن البطارية بشكل آمن.', enA: 'Stabilizes output voltage to safely power loads or charge batteries.'},
+      {arQ: 'هل يحتاج النظام إلى دوائر تحكم؟', enQ: 'Does the system need control circuits?', arA: 'يُستخدم Arduino أو معالج بسيط لقياس الجهد وتوجيه الطاقة.', enA: 'Uses Arduino or simple MCU to monitor voltage and direct power.'},
+      {arQ: 'كيف يتم تركيب البلاطات؟', enQ: 'How are the tiles installed?', arA: 'تثبت وسط رمل مدموك أو تحت بلاط السيراميك مع حماية عازل.', enA: 'Embedded in compacted sand or beneath ceramic tiles with protective coating.'},
+      {arQ: 'ما تأثير درجة الحرارة على الأداء؟', enQ: 'How does temperature affect performance?', arA: 'درجات الحرارة العالية تقلل كفاءة البيزوكهرباء وتزيد هشاشتها.', enA: 'High temps reduce piezo efficiency and increase fragility.'},
+      {arQ: 'هل هناك تداخل صوتي أو اهتزازي؟', enQ: 'Is there any noise or vibration interference?', arA: 'لا؛ العناصر صامتة ولا تولد ضوضاء أو اهتزازات ملحوظة.', enA: 'No; elements are silent and do not produce noticeable noise or vibration.'},
+      {arQ: 'ما هي كفاءة التحويل الطاقة؟', enQ: 'What is the energy conversion efficiency?', arA: 'حوالي 5–15% من الطاقة الحركية تتحول لكهرباء.', enA: 'Around 5–15% of kinetic energy is converted to electricity.'},
+      {arQ: 'هل يمكن توسيع نظام؟', enQ: 'Can the system be scaled up?', arA: 'نعم؛ بزيادة عدد البلاطات وربطها على التوازي/التسلسل.', enA: 'Yes; by adding more tiles wired in parallel/series.'},
+      {arQ: 'كيف يتم ربط البلاطات كهربائياً؟', enQ: 'How are the tiles wired electrically?', arA: 'توصيل جسر تقويم ثم إلى منظم جهد، وتربط الخرج لوحدة تخزين.', enA: 'Connected to a rectifier bridge, then to a voltage regulator, and output to storage.'},
+      {arQ: 'ما الذي يحدث عند الضغط الزائد؟', enQ: 'What happens under excessive pressure?', arA: 'قد تتشقق البلاطات أو تنكسر؛ يستخدم طبقات توزيع الضغط.', enA: 'Tiles may crack or break; pressure-distribution layers are used.'},
+      {arQ: 'كيف توفر حماية ضد الرطوبة؟', enQ: 'How is moisture protection achieved?', arA: 'تغليف البلاطات بأغطية سيليكونية أو راتنجات عازلة.', enA: 'Encapsulation in silicone covers or insulating resins.'},
+      {arQ: 'هل تقدمت موافقات بيئية؟', enQ: 'Are environmental approvals required?', arA: 'يعتمد على الموقع؛ قد يحتاج موافقة البلدية أو هيئة البيئة.', enA: 'Depends on location; may require municipal or environmental agency approval.'},
+      {arQ: 'كيف يتم مراقبة الأداء؟', enQ: 'How is performance monitored?', arA: 'باستخدام حساسات التيار والجهد متصلة بلوحة تحكم.', enA: 'Using current/voltage sensors connected to a control board.'},
+      {arQ: 'هل يمكن توصيل النظام بالإنترنت؟', enQ: 'Can the system be connected to the Internet?', arA: 'نعم؛ بوحدات Wi-Fi أو LoRa لمراقبة الطاقة عن بُعد.', enA: 'Yes; via Wi-Fi or LoRa modules for remote energy monitoring.'},
+      {arQ: 'ما هي تكلفة التركيب؟', enQ: 'What is the total installation cost?', arA: '500–1000 جنيه للمتر المربع حسب المكونات والعمل.', enA: '500–1000 EGP per sqm depending on components and labor.'},
+      {arQ: 'ما عائد الاستثمار؟', enQ: 'What is the ROI?', arA: 'يسترد خلال أكثر من 5 سنوات في الأماكن المزدحمة.', enA: 'Payback exceeds 5 years in high-traffic locations.'},
+      {arQ: 'هل يعمل في المناخ الحار؟', enQ: 'Does it work in hot climates?', arA: 'نعم، مع توفير تبريد أو تهوية للبلاطات.', enA: 'Yes, with cooling or ventilation provision for the tiles.'},
+      {arQ: 'هل يتأثر بالرطوبة؟', enQ: 'Is it affected by humidity?', arA: 'إذا لم يعزل جيدًا قد تتلف الدوائر.', enA: 'If not well sealed, electrical circuits may corrode.'},
+      {arQ: 'ما الحد الأقصى للضغط؟', enQ: 'What is the maximum allowable pressure?', arA: 'حوالي 500 كجم لكل بلاطة.', enA: 'About 500 kg per tile.'},
+      {arQ: 'ما التطبيقات الصناعية؟', enQ: 'What are industrial applications?', arA: 'تشغيل مستشعرات المصانع، إضاءة مساحات الانتظار.', enA: 'Powering factory sensors, lighting waiting areas.'},
+      {arQ: 'هل يمكن دمج في الأحذية؟', enQ: 'Can it be used in shoes?', arA: 'نعم؛ باستخدام رقائق بيزوكهربائية داخل النعال.', enA: 'Yes; by embedding piezo films in insoles.'},
+      {arQ: 'ما مدى الأمان الكهربائي؟', enQ: 'How safe electrically?', arA: 'جهد منخفض (<12V) آمن للاستخدام العام.', enA: 'Low voltage (<12V) is safe for general use.'},
+      {arQ: 'هل الجهد مستقر؟', enQ: 'Is the voltage stable?', arA: 'ينتج نبضات ثم تُنظم كهربائيًا.', enA: 'It produces pulses then regulated electrically.'},
+      {arQ: 'ما حجم البلاطة؟', enQ: 'What is the tile size?', arA: 'حوالي 40×40 سم بسُمك 1–2 سم.', enA: 'About 40×40 cm with 1–2 cm thickness.'},
+      {arQ: 'كيف يؤثر الوزن؟', enQ: 'How does weight affect output?', arA: 'يزيد الوزن الناتج حتى حد التحمل.', enA: 'Heavier weight yields more output up to load limit.'},
+      {arQ: 'ما سرعة المشي المثالية؟', enQ: 'What is the ideal walking speed?', arA: '4–6 كم/س للحصول على أفضل ضغط وتردد.', enA: '4–6 km/h for optimal pressure and frequency.'},
+      {arQ: 'هل يصدر ضوضاء؟', enQ: 'Does it produce noise?', arA: 'لا؛ صامت بدون أجزاء دوارة.', enA: 'No; silent with no rotating parts.'},
+      {arQ: 'ما تأثير الاهتزاز؟', enQ: 'What is the vibration impact?', arA: 'مهمل إذا كان التثبيت صحيحًا.', enA: 'Negligible if properly installed.'},
+      {arQ: 'كيف تُوصل الطاقة؟', enQ: 'How is power delivered?', arA: 'عبر كابلات من التخزين للأحمال.', enA: 'Via cables from storage to loads.'},
+      {arQ: 'هل يتحمل الطقس؟', enQ: 'Is it weatherproof?', arA: 'مع عزل جيد يتحمل المطر والغبار.', enA: 'With good sealing, it withstands rain and dust.'},
+      {arQ: 'كيف يؤثر التآكل؟', enQ: 'How does wear affect tiles?', arA: 'التآكل يقلل الإنتاج ويحتاج استبدال.', enA: 'Wear reduces output and needs replacement.'},
+      {arQ: 'ما معايير الجودة؟', enQ: 'What are quality standards?', arA: 'اختبارات تحميل متكرر واختبارات العزل.', enA: 'Repeated load and insulationテスト.'},
+      {arQ: 'هل يمكن ربط الشبكة؟', enQ: 'Can it be grid-tied?', arA: 'يشحن البطاريات ثم يعاكس للربط.', enA: 'Batteries charged first then inverted for grid tie.'},
+      {arQ: 'ما أحدث الابتكارات؟', enQ: 'What are the latest innovations?', arA: 'رقائق نانوية، أنظمة إدارة طاقة ذكية.', enA: 'Nano-composite films, smart energy management.'},
+      {arQ: 'كيف تحسن الكفاءة؟', enQ: 'How to improve efficiency?', arA: 'استخدام مواد جديدة وتحسين الدوائر.', enA: 'Use new materials and optimize circuits.'}
+    ];
+
+    const container = document.querySelector('.faq-container');
+    faqData.forEach((item, idx) => {
+      const faqItem = document.createElement('div'); faqItem.className = 'faq-item';
+      const q = document.createElement('div'); q.className = 'faq-question';
+      q.innerHTML = `<span class="ar-text">${idx+1}. ${item.arQ}</span><br><span class="en-text">${item.enQ}</span>`;
+      const a = document.createElement('div'); a.className = 'faq-answer';
+      a.innerHTML = `<p class="ar-text">${item.arA}</p><p class="en-text">${item.enA}</p>`;
+      q.addEventListener('click', () => { q.classList.toggle('active'); a.style.display = a.style.display === 'block' ? 'none' : 'block'; });
+      faqItem.appendChild(q); faqItem.appendChild(a); container.appendChild(faqItem);
+    });
+  </script>
+</body>
+</html>
