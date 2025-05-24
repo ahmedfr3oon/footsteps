@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع الطاقة البشرية</title>
+    <link rel="stylesheet" href="محاكاه.css">
+    <style>
+        /* إضافات CSS للعناصر الجديدة */
+        .energy-counter {
+            background: linear-gradient(45deg, #1a237e, #0d47a1);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .simulation-container {
+            border: 2px solid #1a237e;
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+
+        .live-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .data-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر والقوائم السابقة -->
+
+    <main class="container">
+        <!-- إضافة قسم المحاكاة التفاعلية -->
+        <section class="section simulation-container">
+            <h2>محاكاة حية لإنتاج الطاقة</h2>
+            <div class="live-data">
+                <div class="data-card">
+                    <h3>الخطوات/اليوم</h3>
+                    <div id="stepCounter">0</div>
+                </div>
+                <div class="data-card">
+                    <h3>الطاقة المولدة</h3>
+                    <div id="energyOutput">0 واط</div>
+                </div>
+                <div class="data-card">
+                    <h3>السعة التخزينية</h3>
+                    <div id="storageCapacity">0%</div>
+                </div>
+            </div>
+            <button onclick="startSimulation()" class="sim-btn">بدء المحاكاة</button>
+        </section>
+
+        <!-- إضافة محتوى تقني موسع -->
+        <section class="section">
+            <h2>التحليل الفني المتقدم</h2>
+            <div class="tech-analysis">
+                <canvas id="energyChart"></canvas>
+                <div class="comparison-table">
+                    <h3>مقارنة بين التقنيات</h3>
+                    <table>
+                        <tr>
+                            <th>التقنية</th>
+                            <th>الكفاءة</th>
+                            <th>التكلفة/م²</th>
+                            <th>العمر الافتراضي</th>
+                        </tr>
+                        <tr>
+                            <td>بيزوكهربائية</td>
+                            <td>15-20%</td>
+                            <td>$150</td>
+                            <td>5-7 سنوات</td>
+                        </tr>
+                        <tr>
+                            <td>كهرومغناطيسية</td>
+                            <td>25-30%</td>
+                            <td>$200</td>
+                            <td>3-5 سنوات</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // نظام المحاكاة التفاعلية
+        let simulationInterval;
+        let steps = 0;
+        const energyPerStep = 0.006942; // كيلو واط/خطوة
+
+        function startSimulation() {
+            if (!simulationInterval) {
+                simulationInterval = setInterval(() => {
+                    steps++;
+                    updateDashboard();
+                }, 1000);
+            }
+        }
+
+        function updateDashboard() {
+            document.getElementById('stepCounter').textContent = steps;
+            const energy = steps * energyPerStep;
+            document.getElementById('energyOutput').textContent = energy.toFixed(3) + ' كيلو واط';
+            
+            const storage = Math.min((energy / 0.06) * 100, 100);
+            document.getElementById('storageCapacity').textContent = storage.toFixed(1) + '%';
+        }
+
+        // نظام الرسوم البيانية
+        function initChart() {
+            const ctx = document.getElementById('energyChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو'],
+                    datasets: [{
+                        label: 'الإنتاج الشهري (كيلو واط)',
+                        data: [12, 19, 3, 5, 2],
+                        borderColor: '#1a237e',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        }
+
+        // نظام الإشعارات
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // تفعيل النظام
+        document.addEventListener('DOMContentLoaded', () => {
+            initChart();
+            
+            // تحديث الوقت الحي
+            setInterval(() => {
+                const timeElement = document.querySelector('.live-time');
+                if(timeElement) {
+                    timeElement.textContent = new Date().toLocaleTimeString();
+                }
+            }, 1000);
+
+            // تفاعل عند التمرير
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                document.documentElement.style.setProperty('--scroll', `${scrolled}px`);
+            });
+        });
+
+        // نظام الطوارئ
+        function checkEnergyLevel() {
+            const energy = parseFloat(document.getElementById('energyOutput').textContent);
+            if(energy > 0.5) {
+                showNotification('تحذير: تجاوز سعة التخزين المثلى!', 'warning');
+            }
+        }
+
+        // نظام التحكم في المكونات
+        class ComponentSystem {
+            constructor() {
+                this.components = [];
+            }
+
+            addComponent(component) {
+                this.components.push(component);
+                this.updateComponentsList();
+            }
+
+            updateComponentsList() {
+                const list = document.getElementById('componentsList');
+                if(list) {
+                    list.innerHTML = this.components
+                        .map(comp => `<li>${comp.name} - ${comp.status}</li>`)
+                        .join('');
+                }
+            }
+        }
+
+        // تهيئة النظام
+        const energySystem = new ComponentSystem();
+        energySystem.addComponent({ name: 'البلاطة البيزوكهربائية', status: 'نشط' });
+        energySystem.addComponent({ name: 'نظام التخزين', status: 'جاهز' });
+    </script>
+
+    <script>
+        // تأثيرات خاصة
+        document.querySelectorAll('.component-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'none';
+            });
+        });
+
+        // نظام التحميل التدريجي
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
